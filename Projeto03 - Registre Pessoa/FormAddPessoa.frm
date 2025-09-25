@@ -62,10 +62,66 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+' Nesse form load, temos que garantir que os dados sejam resetados.
+' Ele pega os campos de form e zera o valores deles, forçadamente, para evitar problemas.
+
+Private Sub Form_Load()
+ FormAddPessoa.inputNome = ""
+ FormAddPessoa.inputSobrenome = ""
+End Sub
+
+
 Private Sub cancelarBtn_Click()
     Unload Me
 End Sub
 
+' Confirmar_Btn é uma função que irá pegar os dados digitados nos inputNome e inputSobrenome,
+' salvar na classe global; ele realiza as validações principais.
+
 Private Sub confirmarBtn_Click()
+    Debug.Print "confirmarBtn_Click(): Entrou na função"
+    ' Validando para ver se o formulário está vazio '
+    If FormAddPessoa.inputNome = "" Or FormAddPessoa.inputSobrenome = "" Then
+        MsgBox "Você não pode iniciar um input vazio!"
+        Exit Sub
+    End If
     
+    
+    ' Confirmação de Índice de pessoas no sistema:
+    'Debug.Print "-----confirmarBtn_Click-----"
+    'Debug.Print "Valor de ix global:" & ix
+    
+    Debug.Print "confirmarBtn_Click(): Verificando se o registro está dentro do range do vetor"
+    ' Verificando se o registro está dentro do range do vetor
+    If ix >= 10 Then
+        MsgBox "Você não pode registrar mais pessoas!"
+        Unload Me
+    Exit Sub
+    End If
+    
+    ' Verifica se já existe uma pessoa no mesmo nome.
+    ' Esse sistema apenas suporta nomes diferentes.
+    'Verificando se o registro está dentro do range do vetor
+    
+    Debug.Print "confirmarBtn_Click(): Verifica se já existe uma pessoa no mesmo nome."
+    If searchPessoa(FormAddPessoa.inputNome) = True Then
+        MsgBox "Já existe uma pessoa com esse nome!"
+        Exit Sub
+    End If
+    
+    ' Incrementando índice global, verificando se é possível realizar o incremento.
+    ' Na ideia, ele sempre acesso o espaço
+    
+    Debug.Print "confirmarBtn_Click(): Incrementando índice global, verificando se é possível realizar o incremento."
+    If ix + 1 < 10 Then
+        ix = ix + 1
+    End If
+    
+    ' Adicionando pessoa:
+    Debug.Print "confirmarBtn_Click(): Criando pessoa."
+    pessoas(ix).Nome = FormAddPessoa.inputNome
+    pessoas(ix).Sobrenome = FormAddPessoa.inputSobrenome
+    pessoas(ix).ExibirDados
+    Unload Me
 End Sub
+
