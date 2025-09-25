@@ -19,8 +19,7 @@ Public Sobrenome As String ' Define o sobrenome do cliente em tipo String.
     
 'Esse método realizar o print dos dados em uma msgbox.
 Public Sub ExibirDados()
-    Debug.Print "ExibirDados(): Imprimindo dados de um cliente: " & vbClFr & "Nome: " & Nome & vbClFr & "Sobrenome: " & Sobrenome
-    MsgBox "Nome: " & Nome & vbClFr & "Sobrenome: " & Sobrenome
+    Debug.Print "ExibirDados(): Imprimindo dados de um cliente: " & vbCrLf & "Nome: " & Nome & vbCrLf & "Sobrenome: " & Sobrenome
+    MsgBox "Nome: " & Nome & vbCrLf & "Sobrenome: " & Sobrenome
 End Sub
-
-
+    

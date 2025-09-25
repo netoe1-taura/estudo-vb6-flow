@@ -36,7 +36,6 @@ Public Function searchPessoa(Nome As String) As Boolean
         i = i + 1
     Loop
     
-    
 End Function
 
 ' Iniciar pessoa é um método resposável por criar os parâmetros de controles normais da classe.

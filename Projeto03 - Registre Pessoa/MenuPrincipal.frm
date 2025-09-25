@@ -53,7 +53,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Private Sub Form_Load()
-    iniciarPessoas()
+    iniciarPessoas
 End Sub
 Private Sub cadastrarPessoaBtn_Click(Index As Integer)
     FormAddPessoa.Show
