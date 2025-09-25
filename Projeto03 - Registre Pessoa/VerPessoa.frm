@@ -52,6 +52,3 @@ Private Sub cancelarBtn_Click()
     Unload Me
 End Sub
 
-Private Sub inputNome_Change()
-
-End Sub

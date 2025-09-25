@@ -55,10 +55,6 @@ Private Sub cadastrarPessoaBtn_Click(Index As Integer)
     FormAddPessoa.Show
 End Sub
 
-Private Sub sairBtn_Click()
-
-End Sub
-
 Private Sub verPessoaBtn_Click(Index As Integer)
     FormVerPessoa.Show
 End Sub
