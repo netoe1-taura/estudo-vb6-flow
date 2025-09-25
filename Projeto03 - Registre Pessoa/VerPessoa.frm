@@ -48,10 +48,30 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' Seta o valor do Form_Load para zero, resetando
+Private Sub Form_Load()
+    FormVerPessoa.inputNome = ""
+End Sub
+' Fecha a janela do form
 Private Sub cancelarBtn_Click()
     Unload Me
 End Sub
+' Essa função é sobre o botão de confirmar.
+' Após receber um nome no inputNome, ela procura por uma pessoa com aquele nome.
+' Se não cadastrada, dá um MsgBox. Se cadastrada, o próprio método Pessoa.ExibeDados é executado internamente do método searchPessoa
 
-Private Sub inputNome_Change()
-
+Private Sub confirmarBtn_Click()
+    ' Verifica se o input está vazio.
+    
+    If FormVerPessoa.inputNome = "" Then
+        MsgBox "O campo de busca de nome, não pode ser inválido!"
+        Exit Sub
+    End If
+    
+    ' Verifica se a pessoa foi encontrada.
+    ' Se não, imprime uma mensagem de pessoa não encontrada.
+    If searchPessoa(FormVerPessoa.inputNome) = False Then
+        MsgBox "Nenhuma pessoa foi encontrada!"
+    End If
+    
 End Sub

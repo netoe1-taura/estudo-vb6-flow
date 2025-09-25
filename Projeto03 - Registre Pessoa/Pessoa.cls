@@ -6,12 +6,21 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "Class1"
+Attribute VB_Name = "Pessoa"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Public Class Pessoa
+Option Explicit
 
-End Class
+Public Nome As String      ' Define o nome do cliente em tipo String.
+Public Sobrenome As String ' Define o sobrenome do cliente em tipo String.
+    
+    
+'Esse método realizar o print dos dados em uma msgbox.
+Public Sub ExibirDados()
+    Debug.Print "ExibirDados(): Imprimindo dados de um cliente: " & vbClFr & "Nome: " & Nome & vbClFr & "Sobrenome: " & Sobrenome
+    MsgBox "Nome: " & Nome & vbClFr & "Sobrenome: " & Sobrenome
+End Sub
+
 
