@@ -1,13 +1,8 @@
-Attribute VB_Name = "GlobalConsts"
-'------------------------------------GlobalConsts.bas---------------------------------
+Attribute VB_Name = "Debug"
+'------------------------------------Debug.bas---------------------------------
 ' Nome: Ely Torres Neto
-' Objetivo: Centralizar todas as definições de constantes e funções globais em um arquivo
+' Objetivo: Centralizar todas as definições e funções pertencentes aos modulos Debug.
 ' Data: 29/09/2025
-
-Public ENABLE_DEBUG_MSG As Boolean
-' Definição de uma variável global para configurarmos o enable.
-' Quando falso, não dá display de mensagens no programa, é algo que precisamos definir na Sub Main().
-' Você usará a função do módulo de Debug.bas, SetDebugFlag(), para acessar essa função
 
 
 '----------------------------------------Função: void SetDebugFlag() -------------------------------------------------'
@@ -52,25 +47,3 @@ Public Sub DebugPrint(file As String, fn As String, msg As String)
     End If
     
 End Sub
-
-
-'---------------------------------------Função: void FecharForms()----------------------------------------------------'
-' Essa função é capaz de fechar todos os forms do programa. Geralmente,  o uso dele está relacionado a problemas de erro.
-Public Sub FecharForms()
-
-    Dim f As Form
-    ' Percorre todos os formulários abertos
-    For Each f In Forms
-        Unload f       ' Fecha o formulário
-        Set f = Nothing ' Limpa da memória
-    Next f
-    ' Encerra o programa
-    End
-    
-End Sub
-
-
-
-
-
-
