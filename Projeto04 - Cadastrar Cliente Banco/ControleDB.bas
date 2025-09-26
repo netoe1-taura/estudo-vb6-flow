@@ -7,7 +7,6 @@ Attribute VB_Name = "dbGlobalCfg"
 ' Definindo objetos globais para iniciar o projeto
 Public connectionDb_gl As ADODB.Connection
 Public recordSet_gl As ADODB.Recordset
-Public CREDENTIALS_CONNDB As String
 
 
 
