@@ -11,14 +11,3 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Option Explicit
-Public Nome As String
-Public Idade As Integer
-
-Public Sub ExibirCliente_term()
-                Debug.Print "Nome: " & Nome & _
-                vbNewLine & "Idade: " & Idade
-End Sub
-
-
-
