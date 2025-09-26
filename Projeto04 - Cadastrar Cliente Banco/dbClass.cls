@@ -32,11 +32,11 @@ Public connstr As String    ' Variável para realizar a query'
 '            "Initial Catalog=MEU_BANCO;" & _
 '            "User ID=meuUsuario;" & _
 '            "Password=minhaSenha;"
-' DefinirCredenciais(strconn)
+' DefinirCredenciaisRaw(strconn)
 
 
 Public Sub DefinirCredenciaisRaw(buffer As String)
-    
+    On Error GoTo Err
     buffer = Trim(buffer) ' Realiza um trim das credenciais.
     
     If CREDENTIALS_CONNDB Is Nothing Then ' Verifica se a string de conexão foi iniciada.
@@ -44,7 +44,8 @@ Public Sub DefinirCredenciaisRaw(buffer As String)
          CREDENTIALS_CONNDB = buffer
          
      End If
-    
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 '----------------------------------------Função: void DefinirCredenciais() -------------------------------------------------'
@@ -65,6 +66,8 @@ Public Sub DefinirCredenciais(provider As String, _
                             initialCatalog As String, _
                             userId As String, _
                             password As String)
+                            
+    On Error GoTo Err
     ' Realizando os Trim's nas strings!
     
     provider = Trim(provider)
@@ -72,7 +75,8 @@ Public Sub DefinirCredenciais(provider As String, _
     initialCatalog = Trim(initialCatalog)
     userId = Trim(userId)
     password = Trim(password)
-
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 '----------------------------------------Função: abrirConexao() -------------------------------------------------'
@@ -84,7 +88,8 @@ End Sub
 ' abrirConexao()
 
 Public Sub abrirConexao()
-        
+    On Error GoTo Err
+    
     If OPEN_CNN = True Then
     
         Call DebugPrint("dbClass.cls", "abrirConexao", "Você não pode abrir uma conexão já iniciada na mesma classe!")
@@ -99,18 +104,21 @@ Public Sub abrirConexao()
             FecharForms ' Fecha todos os forms forçado!
             Exit Sub
     End If
-            
+
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 '----------------------------------------Função: fecharConexao() -------------------------------------------------'
 ' Função para fechar conexão com o banco de dados. Deve ser usada após abrir conexão
 ' Ex Uso:
+' DefinirCredenciais("SQLOLEDB","MEU_BANCO","meuUsuario","minhaSenha")
 ' abrirConexao()
 ' ...codigo...
 ' fecharConexao()
 
 Public Sub FecharConexao()
-
+    On Error GoTo Err
     If OPEN_CNN = False Then ' Verifica se a conexão já foi fechada
     
         Call DebugPrint("dbClass.cls", "fecharConexao", "Você não pode fechar uma conexão que já foi fechada ou nunca iniciada!") ' Mensagem para Immediate.
@@ -126,7 +134,8 @@ Public Sub FecharConexao()
         
     End If
     
-    
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 

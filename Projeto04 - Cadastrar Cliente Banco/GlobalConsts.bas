@@ -13,7 +13,7 @@ Public ENABLE_DEBUG_MSG As Boolean
 '---------------------------------------Função: void FecharForms()----------------------------------------------------'
 ' Essa função é capaz de fechar todos os forms do programa e encerra o programa de forma forçada. Geralmente, o uso dele está relacionado a problemas de erro.
 Public Sub FecharForms()
-
+    On Error GoTo Err
     Dim f As Form
     ' Percorre todos os formulários abertos
     For Each f In Forms
@@ -22,7 +22,8 @@ Public Sub FecharForms()
     Next f
     ' Encerra o programa
     End
-    
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 

@@ -14,9 +14,10 @@ Attribute VB_Name = "Debug"
 ' Output: None
 
 Public Sub SetDebugFlag(enable As Boolean)
-
+    On Error GoTo Err
     ENABLE_DEBUG_MSG = enable
-    
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
 
 '---------------------------------------Função: void DebugPrint()----------------------------------------------------'
@@ -27,6 +28,8 @@ End Sub
 ' Output: bash@foo:~ Pessoa.cls: mostrarPessoa(): A pessoa não existe!
 
 Public Sub DebugPrint(file As String, fn As String, msg As String)
+    
+    On Error GoTo Err
     
     ' Verifica se a flag foi definida com sucesso globalmente.
     ' Caso não seja, o programa irá fechar totalmente. É uma flag necessária para ser acessada.
@@ -46,4 +49,6 @@ Public Sub DebugPrint(file As String, fn As String, msg As String)
         
     End If
     
+Err:
+ MsgBox "Ocorreu um erro: " & Err.Number & " - " & Err.Description
 End Sub
