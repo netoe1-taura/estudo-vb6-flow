@@ -1,5 +1,5 @@
 FormAddPessoa = 130, 130, 1393, 673, C, 156, 156, 1336, 699, C
-FormPrincipal = 104, 104, 1367, 647, C, 52, 52, 371, 582, C
+FormPrincipal = 104, 104, 1367, 647, , 52, 52, 371, 582, C
 Pessoa = 52, 52, 1232, 595, C
 VariaveisGlobais = 78, 78, 1258, 621, C
 FormVerPessoa = 208, 208, 1388, 751, C, 52, 52, 1232, 595, C
